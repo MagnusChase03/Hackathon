@@ -1,11 +1,15 @@
 
 const express = require('express');
+const ejs = require('ejs');
+
 const app = express();
 
-app.use(express.static(__dirname + '/website'));
+app.use(express.static('public'));
+app.set('view engine', 'ejs');
+
 app.get('/', (req, res) => {
 
-    res.sendFile(__dirname + '/website/index.html');
+    res.render('pages/index');
 
 });
 
