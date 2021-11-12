@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/MagnusChase03/Hackathon#readme",
   "dependencies": {
-    "ejs": "^3.1.6",
     "express": "^4.17.1"
   }
 }
