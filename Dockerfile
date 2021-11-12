@@ -1,4 +1,4 @@
 FROM ubuntu
-RUN apt -y update
+RUN apt update
 EXPOSE 3000
 CMD ["npm", "start"]
