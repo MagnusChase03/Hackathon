@@ -49,7 +49,7 @@ def nebula():
     headers = {'Authorization': '{key}'.format(key=APIkey)}
     jsonData = requests.get(url, headers=headers).json()
     print(json.dumps(jsonData))
-
+    
 if command == "ratemyprofessor":
     ratemyprofessor()
 elif command == "nebula":

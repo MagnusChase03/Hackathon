@@ -1,10 +1,12 @@
 var express = require('express');
-var fs = require('fs');
+var fs = require('fs'); 
+var cors = require('cors')
 const { exec } = require("child_process");
 
 var router = express.Router();
 
 // Returns grades
+router.options('/grades/:semester/:year', cors());
 router.get('/grades/:semester/:year', function(req, res, next) {
 
   var semester = req.params["semester"];
@@ -21,6 +23,7 @@ router.get('/grades/:semester/:year', function(req, res, next) {
 });
 
 // Returns grades containing proffesor name
+router.options('/grades/:semester/:year/:prof', cors());
 router.get('/grades/:semester/:year/:prof', function(req, res, next) {
 
   var semester = req.params["semester"];
@@ -52,6 +55,7 @@ router.get('/grades/:semester/:year/:prof', function(req, res, next) {
 });
 
 // Returns professor with most A+ in class
+router.options('/grades/best/:semester/:year/:subj/:class', cors());
 router.get('/grades/best/:semester/:year/:subj/:class', function(req, res, next) {
 
   var semester = req.params["semester"];
@@ -88,6 +92,7 @@ router.get('/grades/best/:semester/:year/:subj/:class', function(req, res, next)
 });
 
 // Get rate my professor ratings
+router.options('/rating/:prof', cors());
 router.get('/rating/:prof', function(req, res, next) {
 
     var professor = req.params["prof"];
@@ -101,6 +106,7 @@ router.get('/rating/:prof', function(req, res, next) {
 });
 
 // Get nebula data on professor
+router.options('/nebula/:prof', cors());
 router.get('/nebula/:prof', function(req, res, next) {
 
   var professor = req.params["prof"];
