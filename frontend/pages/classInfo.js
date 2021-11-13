@@ -3,9 +3,14 @@ import navStyle from '../styles/Nav.module.css'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import GetGrades from './components/getGrades'
+// import GetGrades from './components/getGrades'
 const appName = 'UTD *name pending*'
 
+function getGrades() {
+  fetch('http://localhost:3001/grades/fall/2018', {method: 'GET', headers: {'Content-Type': 'application/json'}})
+  .then(res => res.json())
+  .then(json => {console.log(json);})
+}
 
 export default function Professors() {
   return (
@@ -28,7 +33,8 @@ export default function Professors() {
       <main className={styles.main}>
         <h1>Class Information</h1>
         <p>Need grade info, professor ratings, or any other notable content on a class? Enter it in the field below!</p>
-        <GetGrades />
+        {/* <GetGrades /> */}
+        {getGrades()}
 
       </main>
 
