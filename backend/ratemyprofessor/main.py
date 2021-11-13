@@ -48,12 +48,8 @@ def nebula():
     url =  "http://api.utdnebula.com/v1/sections/search?instructors=" + sys.argv[2] + "%20" + sys.argv[3]
     headers = {'Authorization': '{key}'.format(key=APIkey)}
     jsonData = requests.get(url, headers=headers).json()
-    print(jsonData)
+    print(json.dumps(jsonData))
 
-
-
-
-nebula()
 if command == "ratemyprofessor":
     ratemyprofessor()
 elif command == "nebula":

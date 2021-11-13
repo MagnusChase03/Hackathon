@@ -92,11 +92,24 @@ router.get('/rating/:prof', function(req, res, next) {
 
     var professor = req.params["prof"];
 
-    exec("python3 ratemyprofessor/main.py " + professor, (error, stdout, stderr) => {
+    exec("python3 ratemyprofessor/main.py ratemyprofessor " + professor, (error, stdout, stderr) => {
     
         res.json([JSON.parse(stdout)]);
 
     });
+
+});
+
+// Get nebula data on professor
+router.get('/nebula/:prof', function(req, res, next) {
+
+  var professor = req.params["prof"];
+
+  exec("python3 ratemyprofessor/main.py nebula " + professor, (error, stdout, stderr) => {
+  
+      res.json(JSON.parse(stdout));
+
+  });
 
 });
 
