@@ -57,14 +57,9 @@ def sorg():
 
 
 if command == "ratemyprofessor":
-    ratemyprofessor()
+    rateMyProfessor()
 elif command == "nebula":
     nebula()
 elif command == "sorg":
     sorg()
     
-
-
-
-
-
