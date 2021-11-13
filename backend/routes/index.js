@@ -1,5 +1,7 @@
 var express = require('express');
 var fs = require('fs');
+const { exec } = require("child_process");
+
 var router = express.Router();
 
 // Returns grades
@@ -82,6 +84,19 @@ router.get('/grades/best/:semester/:year/:subj/:class', function(req, res, next)
       res.json(bestGrader);
 
   });
+
+});
+
+// Get rate my professor ratings
+router.get('/rating/:prof', function(req, res, next) {
+
+    var professor = req.params["prof"];
+
+    exec("python3 ratemyprofessor/main.py " + professor, (error, stdout, stderr) => {
+    
+        res.json([JSON.parse(stdout)]);
+
+    });
 
 });
 
