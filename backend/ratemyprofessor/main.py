@@ -50,13 +50,16 @@ def nebula():
     jsonData = requests.get(url, headers=headers).json()
     print(json.dumps(jsonData))
 
+def sorg():
+    url = "https://api.presence.io/utdallas/v1/organizations"
+    jsonData = requests.get(url).json()
+    print(jsonData)
+
+
 if command == "ratemyprofessor":
     rateMyProfessor()
 elif command == "nebula":
     nebula()
+elif command == "sorg":
+    sorg()
     
-
-
-
-
-
