@@ -1,14 +1,13 @@
+import styles from '../styles/ClassInfo.module.css'
+import navStyle from '../styles/Nav.module.css'
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import navStyle from '../styles/Nav.module.css'
 import Link from 'next/link'
-
 const appName = 'UTD *name pending*'
 
-export default function Home() {
+export default function Professors() {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>UTD *name pending*</title>
         <meta name="description" content="We got kicked out of our room so we made this!" />
@@ -25,8 +24,9 @@ export default function Home() {
       </nav>
 
       <main className={styles.main}>
-        <h1>Welcome to {appName}!</h1>
-        <h3>We're happy to see you!</h3>
+        <h1>Class Information</h1>
+        <p>Need grade info, professor ratings, or any other notable content on a class? Enter it in the field below!</p>
+        <form className={styles.form}></form>
       </main>
 
       <footer className={navStyle.footer}>
