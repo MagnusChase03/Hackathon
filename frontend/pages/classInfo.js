@@ -7,7 +7,7 @@ import Link from 'next/link'
 const appName = 'UTD *name pending*'
 
 function getGrades() {
-  fetch('http://localhost:3001/grades/fall/2018', {method: 'GET', headers: {'Content-Type': 'application/json'}})
+  fetch('http://localhost:3001/grades/fall/2018')
   .then(res => res.json())
   .then(json => {console.log(json);})
 }
