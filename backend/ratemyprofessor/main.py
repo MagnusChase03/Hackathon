@@ -1,15 +1,8 @@
 import ratemyprofessor
-import pymongo
 import json
+import sys
 
-
-CLIENT = pymongo.MongoClient("mongodb://localhost:27017/")
-DB = CLIENT["hackathon"]
-COLLECTION = DB["ratemyprofessor"]
-
-collist = DB.list_collection_names()
-
-# professorName = "Khiem Le" lol
+professorName = sys.argv[1] + " " + sys.argv[2]
 
 professor = ratemyprofessor.get_professor_by_school_and_name(
     ratemyprofessor.get_school_by_name("The University of Texas at Dallas"), professorName)
