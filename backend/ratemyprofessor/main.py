@@ -9,7 +9,7 @@ COLLECTION = DB["ratemyprofessor"]
 
 collist = DB.list_collection_names()
 
-professorName = "Khiem Le"
+# professorName = "Khiem Le"
 
 professor = ratemyprofessor.get_professor_by_school_and_name(
     ratemyprofessor.get_school_by_name("The University of Texas at Dallas"), professorName)
