@@ -120,4 +120,44 @@ router.get('/nebula/:prof', function (req, res, next) {
 
 });
 
+// Get all orginizations
+router.options('/sorg', cors());
+router.get('/sorg', function (req, res, next) {
+
+  exec("python3 ratemyprofessor/main.py sorg", (error, stdout, stderr) => {
+
+    res.json(JSON.parse(stdout));
+
+  });
+
+});
+
+// Get all orginizations
+router.options('/sorg', cors());
+router.get('/sorg/:name', function (req, res, next) {
+
+  var name = req.params["name"];
+
+  exec("python3 ratemyprofessor/main.py sorg", (error, stdout, stderr) => {
+
+    var orginzation = JSON.parse(stdout);
+
+    // Find names with keyword
+    var matchs = []
+    for (var org in orginzation) {
+
+      if (orginzation[org]["name"].includes(name)) {
+
+        matches.push(orginzation[org]);
+
+      }
+
+    }
+
+    res.json(matches);
+
+  });
+
+});
+
 module.exports = router;
