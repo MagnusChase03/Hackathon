@@ -3,7 +3,9 @@ import navStyle from '../styles/Nav.module.css'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import GetGrades from './components/getGrades'
 const appName = 'UTD *name pending*'
+
 
 export default function Professors() {
   return (
@@ -26,7 +28,8 @@ export default function Professors() {
       <main className={styles.main}>
         <h1>Class Information</h1>
         <p>Need grade info, professor ratings, or any other notable content on a class? Enter it in the field below!</p>
-        <form className={styles.form}></form>
+        <GetGrades />
+
       </main>
 
       <footer className={navStyle.footer}>
