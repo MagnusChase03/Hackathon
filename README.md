@@ -1,6 +1,10 @@
 # Hackathon
-Repo for our hackathon
+Team WON is a hackathon team that is currently working on a project soon to be disclosed.
 
+### SLOGAN
+We have the meats!
 
-
-cum
+### Team Members
+Zach Ness
+Kolbe Mosher
+Kevin Harvey
