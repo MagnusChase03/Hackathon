@@ -1,6 +1,5 @@
 # Hackathon
-Repo for our hackathon
+Team WON is a hackathon team that is currently working on a project soon to be disclosed.
 
-
-
-redacted
+### SLOGAN
+We have the meats!
