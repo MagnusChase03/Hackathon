@@ -15,7 +15,7 @@ function createElements(stringJSON) {
 export default class SearchForm extends Component {
     constructor(props) {
         super(props);
-        this.state = { semester: 'fall', year: '2017', subject: '', course: '', professor: '', itemCount: 0, returnedJSON: '' };
+        this.state = { semester: 'fall', year: '2017', subject: '', course: '', professor: '', best: false, itemCount: 0, returnedJSON: '' };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.elements = [];
@@ -58,8 +58,19 @@ export default class SearchForm extends Component {
                     this.forceUpdate();
                 })
         }
-        else if (this.state.professor == '' && this.state.subject != '' && this.state.course != '') {
+        else if (this.state.professor == '' && this.state.subject != '' && this.state.course != '' && !this.state.best) {
             fetch('http://localhost:3001/grades/' + this.state.semester + '/' + this.state.year + '/' + this.state.subject + '/' + this.state.course)
+                .then(res => res.json())
+                .then(json => {
+                    console.log(json);
+                    this.setState({ returnedJSON: JSON.stringify(json) });
+                    // console.log(this.state.returnedJSON);
+                    this.elements = createElements(this.state.returnedJSON);
+                    this.forceUpdate();
+                })
+        }
+        else if (this.state.professor == '' && this.state.subject != '' && this.state.course != '' && this.state.best) {
+            fetch('http://localhost:3001/grades/best/' + this.state.semester + '/' + this.state.year + '/' + this.state.subject + '/' + this.state.course)
                 .then(res => res.json())
                 .then(json => {
                     console.log(json);
@@ -110,6 +121,11 @@ export default class SearchForm extends Component {
                     <label>
                         Professor
                         <input type="text" name='professor' value={this.state.professor} onChange={this.handleChange} />
+                    </label>
+
+                    <label>
+                        Best
+                        <input type="checkbox" name="best" value={this.state.best} onChange={this.handleChange} />
                     </label>
 
                     <input type="submit" value="Submit" />

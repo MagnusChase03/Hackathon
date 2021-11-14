@@ -1,7 +1,6 @@
 import styles from '../styles/ClassInfo.module.css'
 import navStyle from '../styles/Nav.module.css'
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
 import SearchForm from './components/searchForm'
 // import GetGrades from './components/getGrades'
