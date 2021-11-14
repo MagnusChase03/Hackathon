@@ -3,6 +3,7 @@ import navStyle from '../styles/Nav.module.css'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import SearchForm from './components/searchForm'
 // import GetGrades from './components/getGrades'
 const appName = 'UTD *name pending*'
 
@@ -34,7 +35,7 @@ export default function Professors() {
         <h1>Class Information</h1>
         <p>Need grade info, professor ratings, or any other notable content on a class? Enter it in the field below!</p>
         {/* <GetGrades /> */}
-        {getGrades()}
+        <SearchForm />
 
       </main>
 
