@@ -5,3 +5,13 @@
     justify-content: center;
     height: 100vh;
 }
+
+.courseCard {
+    margin: 2%;
+    padding: 1%;
+    background-color: rgba(0.1, 0.1, 0.1, 0.1);
+}
+
+.courseCard li {
+    list-style-type: none;
+}

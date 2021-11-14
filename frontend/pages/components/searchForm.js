@@ -1,5 +1,17 @@
 import React, { Component } from 'react'
+import style from '../../styles/ClassInfo.module.css'
 
+
+function getRMP(prof) {
+    let returnedJSON = {}
+    fetch('http://localhost:3001/rating/' + prof)
+        .then(res => res.json())
+        .then(json => {
+            // console.log(json);
+            returnedJSON = json;
+            return returnedJSON;
+        })
+}
 
 // This function creates elements out of the JSON that is returned
 // Edit this to change the way the elements on the page look
@@ -7,7 +19,69 @@ function createElements(stringJSON) {
     let json = JSON.parse(stringJSON);
     let elements = [];
     for (let i = 0; i < json.length; i++) {
-        elements.push(<li key={i}>{json[i]["prof"]}</li>)
+
+        let a1 = Number(json[i]["grades"]['A+']) || 0;
+        let a2 = Number(json[i]["grades"]['A']) || 0;
+        let a3 = Number(json[i]["grades"]['A-']) || 0;
+
+        let b1 = Number(json[i]["grades"]['B+']) || 0;
+        let b2 = Number(json[i]["grades"]['B']) || 0;
+        let b3 = Number(json[i]["grades"]['B-']) || 0;
+
+        let c1 = Number(json[i]["grades"]['C+']) || 0;
+        let c2 = Number(json[i]["grades"]['C']) || 0;
+        let c3 = Number(json[i]["grades"]['C-']) || 0;
+
+        let d1 = Number(json[i]["grades"]['D+']) || 0;
+        let d2 = Number(json[i]["grades"]['D']) || 0;
+        let d3 = Number(json[i]["grades"]['D-']) || 0;
+
+
+        elements.push(
+            <div className={style.courseCard}>
+                <ul>
+                    <li key={i}>Course: {json[i]["subj"]} {json[i]["num"]}</li>
+                    <li key={i}>Instructor: {json[i]["prof"]}</li>
+                    <li key={i}>A: {a1 + a2 + a3}</li>
+                    <li key={i}>B: {b1 + b2 + b3}</li>
+                    <li key={i}>C: {c1 + c2 + c3}</li>
+                    <li key={i}>D: {d1 + d2 + d3}</li>
+                    <li key={i}>F: {Number(json[i]["grades"]['F']) || 0}</li>
+                </ul>
+            </div>
+
+
+        )
+    }
+    return elements;
+}
+
+function createRMP(stringJSON) {
+    let json = JSON.parse(stringJSON);
+    let elements = [];
+
+    for (let i = 0; i < json.length; i++) {
+        let prof = json[i]["prof"];
+
+        fetch('http://localhost:3001/rating/' + prof)
+            .then(res => res.json())
+            .then(json => {
+                console.log(json[i]["rating"]);
+                console.log("RMP SUCCESS")
+                elements.push(
+                    <div>
+                        <ul>
+                            <li key={i}>Rating: {json[i]["rating"]}</li>
+                            <li key={i}># of Ratings: {json[i]["numberOfRatings"]}</li>
+                            <li key={i}>Difficulty: {json[i]["difficulty"]}</li>
+                            <li key={i}>% Would Take Again: {json[i]["wouldTakeAgain"]}</li>
+                        </ul>
+                    </div>
+                )
+            })
+
+
+
     }
     return elements;
 }
@@ -19,6 +93,7 @@ export default class SearchForm extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.elements = [];
+        this.rmpElements = [];
     }
 
     handleChange(event) {
@@ -42,7 +117,6 @@ export default class SearchForm extends Component {
                 .then(json => {
                     console.log(json);
                     this.setState({ returnedJSON: JSON.stringify(json) });
-                    // console.log(this.state.returnedJSON);
                     this.elements = createElements(this.state.returnedJSON);
                     this.forceUpdate();
                 })
@@ -53,7 +127,6 @@ export default class SearchForm extends Component {
                 .then(json => {
                     console.log(json);
                     this.setState({ returnedJSON: JSON.stringify(json) });
-                    // console.log(this.state.returnedJSON);
                     this.elements = createElements(this.state.returnedJSON);
                     this.forceUpdate();
                 })
@@ -64,7 +137,6 @@ export default class SearchForm extends Component {
                 .then(json => {
                     console.log(json);
                     this.setState({ returnedJSON: JSON.stringify(json) });
-                    // console.log(this.state.returnedJSON);
                     this.elements = createElements(this.state.returnedJSON);
                     this.forceUpdate();
                 })
@@ -75,7 +147,6 @@ export default class SearchForm extends Component {
                 .then(json => {
                     console.log(json);
                     this.setState({ returnedJSON: JSON.stringify(json) });
-                    // console.log(this.state.returnedJSON);
                     this.elements = createElements(this.state.returnedJSON);
                     this.forceUpdate();
                 })
@@ -131,9 +202,8 @@ export default class SearchForm extends Component {
                     <input type="submit" value="Submit" />
                 </form>
                 <div className='returnedElements'>
-                    <ul>
-                        {this.elements}
-                    </ul>
+                    {this.elements}
+                    {this.rmpElements}
                 </div>
 
             </div>
