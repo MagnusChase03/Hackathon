@@ -22,7 +22,7 @@ function createElements(stringJSON) {
                 </div> 
                 <div class="col-sm-4">
 
-                    Leader: {json[i]["contactName"]}<br/>
+                    Contact Name: {json[i]["contactName"]}<br/>
                     Member Count: {json[i]["memberCount"]}<br/>
                     Meeting Location: {json[i]["regularMeetingLocation"] || "N/A"}<br/>
                     Twitter: @{json[i]["twitter"] || "N/A"}
