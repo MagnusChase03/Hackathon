@@ -7,114 +7,136 @@ import Link from 'next/link'
 const appName = 'UTD *name pending*'
 
 export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>UTD *name pending*</title>
-        <meta name="description" content="We got kicked out of our room so we made this!" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="/css/bootstrap.css" />
-        <link rel="stylesheet" href="/css/main.css" />
-      </Head>
+    return (
+        <div className={styles.container}>
+            <Head>
+                <title>UTD *name pending*</title>
+                <meta name="description" content="We got kicked out of our room so we made this!" />
+                <link rel="icon" href="/favicon.ico" />
+                <link rel="stylesheet" href="/css/bootstrap.css" />
+                <link rel="stylesheet" href="/css/main.css" />
+            </Head>
 
-      <nav className={navStyle.navBar}>
-        <ul>
-          <li className={navStyle.navTitle}><Link href='/'>{appName}</Link></li>
-          <li><Link href='/classInfo'><a>Class Information</a></Link></li>
-          <li><Link href='/studentOrgs'><a>Student Organizations</a></Link></li>
-          <li><Link href='/about'><a>About</a></Link></li>
-        </ul>
-      </nav>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="/">UTD *name pending*</a>
 
-      <main className={styles.main}>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <div class="container-fluid">
+                    <ul class="navbar-nav mr-auto">
 
-            <div class="row">
+                        <li class="nav-item">
 
-                <div class="col-sm-1"></div>
+                            <a class="nav-link" href="/classInfo">Class Information</a>
 
-                <div class="col-sm-10" id="content">
+                        </li>
 
-                    <h1>About Us</h1>
-                    <hr/>
-                    <p>
-                        Our team, <b>Won</b>, is consisted of three members<b> Kevin Harvey, Kolbe Mosher, and Zachary Ness</b>.
-                        We are a group of dedicated programmers who love what we do, so participating in the Hackathon was a given.
-                        Though we were the first group to arrive and got an amazing room setup, our room had to be used for sponsers
-                        due to the fact that the police did not unlock all of the rooms needed. Our goal was to create an app that
-                        would be general enough to help all students at UTD.
-                    </p><br/><br/>
+                        <li class="nav-item">
 
-                    <div class="container-fluid">
+                            <a class="nav-link" href="/studentOrgs">Student Organizations</a>
 
-                        <div class="row">
+                        </li>
 
-                            <div class="col-sm-4">
+                        <li class="nav-item">
 
-                                <img src="assets/Zach.jpg" /><br/>
+                            <a class="nav-link" href="/about">About</a>
 
-                            </div>
-                            <div class="col-sm-8">
+                        </li>
 
-                                <h3>Zachary Ness</h3><hr/>
-                                <p>
-                                    Yo, I'm Zachary Ness. I am a freshman majoring in computer science, and I have been programming
-                                    on Linux since I was six year old. This is all due to my father being a software developer and
-                                    wanting to get me into programming. Once I was introduced to coding, I just could not get enough
-                                    of it. To this day, I still use Arch Linux and am constatly trying to learn more level programming.
-                                    Recently, I have been learning x86 assembly to help build on my understanding to write better C code.
-                                </p>
+                    </ul>
 
-                            </div>
+                </div>
+                
+            </nav>
 
-                        </div><br/><br/>
-                        <div class="row">
+            <main className={styles.main}>
 
-                            <div class="col-sm-8">
+                <div class="container-fluid">
 
-                                <h3>Kevin Harvey</h3><hr/>
+                    <div class="row">
 
-                            </div>
-                            <div class="col-sm-4">
+                        <div class="col-sm-1"></div>
 
-                                <img src="assets/kevin.jpg" id="kevin"/><br/>
+                        <div class="col-sm-10" id="content">
 
-                            </div>
+                            <h1>About Us</h1>
+                            <hr />
+                            <p>
+                                Our team, <b>Won</b>, is consisted of three members<b> Kevin Harvey, Kolbe Mosher, and Zachary Ness</b>.
+                                We are a group of dedicated programmers who love what we do, so participating in the Hackathon was a given.
+                                Though we were the first group to arrive and got an amazing room setup, our room had to be used for sponsers
+                                due to the fact that the police did not unlock all of the rooms needed. Our goal was to create an app that
+                                would be general enough to help all students at UTD.
+                            </p><br /><br />
 
-                        </div><br/><br/>
-                        <div class="row">
+                            <div class="container-fluid">
 
-                            <div class="col-sm-4">
+                                <div class="row">
 
-                                <img src="assets/kolbe.jpg" /><br/>
+                                    <div class="col-sm-4">
 
-                            </div>
-                            <div class="col-sm-8">
+                                        <img src="assets/Zach.jpg" /><br />
 
-                                <h3>Kolbe Mosher</h3><hr/>
+                                    </div>
+                                    <div class="col-sm-8">
+
+                                        <h3>Zachary Ness</h3><hr />
+                                        <p>
+                                            Yo, I'm Zachary Ness. I am a freshman majoring in computer science, and I have been programming
+                                            on Linux since I was six year old. This is all due to my father being a software developer and
+                                            wanting to get me into programming. Once I was introduced to coding, I just could not get enough
+                                            of it. To this day, I still use Arch Linux and am constatly trying to learn more level programming.
+                                            Recently, I have been learning x86 assembly to help build on my understanding to write better C code.
+                                        </p>
+
+                                    </div>
+
+                                </div><br /><br />
+                                <div class="row">
+
+                                    <div class="col-sm-8">
+
+                                        <h3>Kevin Harvey</h3><hr />
+
+                                    </div>
+                                    <div class="col-sm-4">
+
+                                        <img src="assets/kevin.jpg" id="kevin" /><br />
+
+                                    </div>
+
+                                </div><br /><br />
+                                <div class="row">
+
+                                    <div class="col-sm-4">
+
+                                        <img src="assets/kolbe.jpg" /><br />
+
+                                    </div>
+                                    <div class="col-sm-8">
+
+                                        <h3>Kolbe Mosher</h3><hr />
+
+                                    </div>
+
+                                </div>
+
 
                             </div>
 
                         </div>
 
+                        <div class="col-sm-1"></div>
 
                     </div>
 
                 </div>
 
-                <div class="col-sm-1"></div>
+            </main>
 
-            </div>
-
+            <footer className={navStyle.footer}>
+                <h5>Created at HackUTD</h5>
+                <a href="https://github.com/MagnusChase03/Hackathon">Github</a>
+            </footer>
         </div>
-
-      </main>
-
-      <footer className={navStyle.footer}>
-        <h5>Created at HackUTD</h5>
-        <a href="https://github.com/MagnusChase03/Hackathon">Github</a>
-      </footer>
-    </div>
-  )
+    )
 }
