@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 
+
+// This function creates elements out of the JSON that is returned
+// Edit this to change the way the elements on the page look
 function createElements(stringJSON) {
     let json = JSON.parse(stringJSON);
     let elements = [];
     for (let i = 0; i < json.length; i++) {
         elements.push(<li key={i}>{json[i]["prof"]}</li>)
     }
-    // console.log(elements);
     return elements;
 }
 
@@ -37,8 +39,9 @@ export default class SearchForm extends Component {
         if (this.state.subject == '' && this.state.course == '' && this.state.professor == '') {
             fetch('http://localhost:3001/grades/' + this.state.semester + '/' + this.state.year)
                 .then(res => res.json())
-                .then(json => { console.log(json); 
-                    this.setState({ returnedJSON: JSON.stringify(json) }); 
+                .then(json => {
+                    console.log(json);
+                    this.setState({ returnedJSON: JSON.stringify(json) });
                     // console.log(this.state.returnedJSON);
                     this.elements = createElements(this.state.returnedJSON);
                     this.forceUpdate();
@@ -47,18 +50,20 @@ export default class SearchForm extends Component {
         else if (this.state.professor != '' && this.state.subject == '' && this.state.course == '') {
             fetch('http://localhost:3001/grades/' + this.state.semester + '/' + this.state.year + '/' + this.state.professor)
                 .then(res => res.json())
-                .then(json => { console.log(json); 
-                    this.setState({ returnedJSON: JSON.stringify(json) }); 
+                .then(json => {
+                    console.log(json);
+                    this.setState({ returnedJSON: JSON.stringify(json) });
                     // console.log(this.state.returnedJSON);
                     this.elements = createElements(this.state.returnedJSON);
                     this.forceUpdate();
                 })
         }
         else if (this.state.professor == '' && this.state.subject != '' && this.state.course != '') {
-            fetch('http://localhost:3001/grades/best/' + this.state.semester + '/' + this.state.year + '/' + this.state.subject + '/' + this.state.course)
+            fetch('http://localhost:3001/grades/' + this.state.semester + '/' + this.state.year + '/' + this.state.subject + '/' + this.state.course)
                 .then(res => res.json())
-                .then(json => { console.log(json); 
-                    this.setState({ returnedJSON: JSON.stringify(json) }); 
+                .then(json => {
+                    console.log(json);
+                    this.setState({ returnedJSON: JSON.stringify(json) });
                     // console.log(this.state.returnedJSON);
                     this.elements = createElements(this.state.returnedJSON);
                     this.forceUpdate();
@@ -67,12 +72,7 @@ export default class SearchForm extends Component {
         else {
             alert("Invalid search, please ensure all items are lowercase!")
         }
-
-
-
     }
-
-
 
     render() {
         return (
@@ -114,12 +114,11 @@ export default class SearchForm extends Component {
 
                     <input type="submit" value="Submit" />
                 </form>
-
-                <ul>
-                    {console.log(this.elements)}
-                    {this.elements}
-                </ul>
-
+                <div className='returnedElements'>
+                    <ul>
+                        {this.elements}
+                    </ul>
+                </div>
 
             </div>
         )

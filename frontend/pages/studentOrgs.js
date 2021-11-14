@@ -1,10 +1,7 @@
-import styles from '../styles/ClassInfo.module.css'
+import styles from '../styles/studentOrgs.module.css'
 import navStyle from '../styles/Nav.module.css'
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
-import SearchForm from './components/searchForm'
-// import GetGrades from './components/getGrades'
 const appName = 'UTD *name pending*'
 
 export default function ClassInfo() {
@@ -26,9 +23,8 @@ export default function ClassInfo() {
       </nav>
 
       <main className={styles.main}>
-        <h1>Class Information</h1>
-        <p>Need grade info, professor ratings, or any other notable content on a class? Enter it in the field below!</p>
-        <SearchForm /> 
+        <h1>Student Organizations</h1>
+
 
       </main>
 
