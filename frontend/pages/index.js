@@ -17,7 +17,7 @@ export default function Home() {
 
       <nav className={navStyle.navBar}>
         <ul>
-          <li className={navStyle.navTitle}><Link href='/'>{appName}</Link></li>
+          <li className={navStyle.navTitle}><Link href='/'><img src="/assets/logo.png" alt="Logo">{appName}</Link></li>
           <li><Link href='/classInfo'><a>Class Information</a></Link></li>
           <li><Link href='/studentOrgs'><a>Student Organizations</a></Link></li>
           <li><Link href='/about'><a>About</a></Link></li>
