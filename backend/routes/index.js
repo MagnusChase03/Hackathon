@@ -85,7 +85,7 @@ router.get('/grades/best/:semester/:year/:subj/:class', function (req, res, next
 
     }
 
-    res.json(bestGrader);
+    res.json([bestGrader]);
 
   });
 
