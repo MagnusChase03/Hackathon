@@ -3,14 +3,13 @@ import navStyle from '../styles/Nav.module.css'
 import Head from 'next/head'
 import Link from 'next/link'
 import SearchForm from './components/searchForm'
-// import GetGrades from './components/getGrades'
 const appName = 'Singularity'
 
 export default function ClassInfo() {
   return (
     <div>
       <Head>
-        <title>UTD *name pending*</title>
+        <title>{appName}</title>
         <meta name="description" content="We got kicked out of our room so we made this!" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="css/bootstrap.css" />

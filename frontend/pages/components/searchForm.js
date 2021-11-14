@@ -1,54 +1,6 @@
 import React, { Component } from 'react'
 import style from '../../styles/ClassInfo.module.css'
 
-// This function creates elements out of the JSON that is returned
-// Edit this to change the way the elements on the page look
-function createElements(stringJSON, string2) {
-    let json = JSON.parse(stringJSON);
-    let json2 = JSON.parse(string2)
-    let elements = [];
-    for (let i = 0; i < json.length; i++) {
-
-        let a1 = Number(json[i]["grades"]['A+']) || 0;
-        let a2 = Number(json[i]["grades"]['A']) || 0;
-        let a3 = Number(json[i]["grades"]['A-']) || 0;
-
-        let b1 = Number(json[i]["grades"]['B+']) || 0;
-        let b2 = Number(json[i]["grades"]['B']) || 0;
-        let b3 = Number(json[i]["grades"]['B-']) || 0;
-
-        let c1 = Number(json[i]["grades"]['C+']) || 0;
-        let c2 = Number(json[i]["grades"]['C']) || 0;
-        let c3 = Number(json[i]["grades"]['C-']) || 0;
-
-        let d1 = Number(json[i]["grades"]['D+']) || 0;
-        let d2 = Number(json[i]["grades"]['D']) || 0;
-        let d3 = Number(json[i]["grades"]['D-']) || 0;
-
-
-        elements.push(
-            <div className={style.courseCard}>
-                <ul>
-                    <li key={i}>Course: {json[i]["subj"]} {json[i]["num"]}</li>
-                    <li key={i}>Instructor: {json[i]["prof"]}</li>
-                    <li key={i}>A: {a1 + a2 + a3}</li>
-                    <li key={i}>B: {b1 + b2 + b3}</li>
-                    <li key={i}>C: {c1 + c2 + c3}</li>
-                    <li key={i}>D: {d1 + d2 + d3}</li>
-                    <li key={i}>F: {Number(json[i]["grades"]['F']) || 0}</li>
-                    <li key={i}>Rating: {json2[i]["rating"]}</li>
-                    <li key={i}># of Ratings: {json2[i]["numberOfRatings"]}</li>
-                    <li key={i}>Difficulty: {json2[i]["difficulty"]}</li>
-                    <li key={i}>% Would Take Again: {json2[i]["wouldTakeAgain"]}</li>
-                </ul>
-            </div>
-
-
-        )
-    }
-    return elements;
-}
-
 function testElements(stringJSON, string2) {
     let json = JSON.parse(stringJSON);
     let json2 = JSON.parse(string2)
@@ -151,7 +103,8 @@ export default class SearchForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
         console.log(this.state);
-
+        this.elements = [];
+        this.forceUpdate();
 
 
         if (this.state.subject == '' && this.state.course == '' && this.state.professor == '') {
@@ -293,7 +246,7 @@ export default class SearchForm extends Component {
                         <input type="checkbox" name="best" value={this.state.best} onChange={this.handleChange} />
                     </label><br/><br/>
 
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Search" />
                 </form>
                 <div className='returnedElements'>
                     {this.elements}

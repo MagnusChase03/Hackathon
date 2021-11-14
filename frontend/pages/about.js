@@ -10,7 +10,7 @@ export default function Home() {
     return (
         <div className={styles.container}>
             <Head>
-                <title>UTD *name pending*</title>
+                <title>{appName}</title>
                 <meta name="description" content="We got kicked out of our room so we made this!" />
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="stylesheet" href="/css/bootstrap.css" />
@@ -74,6 +74,11 @@ export default function Home() {
                                     <div class="col-sm-8">
 
                                         <h3>Kevin Harvey</h3><hr />
+                                        <p>
+                                            I'm a freshman Computer Science major passionate about software development and networking. 
+                                            In my free time I enjoy tinkering with my 3D printer and creating animations in Blender. In the future
+                                            I hope to spend my days as a software engineer and nights as a hobbyist of all things technology.
+                                        </p>
 
                                     </div>
                                     <div class="col-sm-4">

@@ -1,6 +1,6 @@
 .logo {
-    height: 3vh;
-    width: 12.24vh;
+    height: 2.4vh;
+    /* width: 12.24vh; */
     padding: 0rem;
 }
 
@@ -24,7 +24,7 @@
 
 .navBar li {
     float: left;
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 1rem;
 }
 
 .navBar li a {

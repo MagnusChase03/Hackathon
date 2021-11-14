@@ -11,7 +11,7 @@ export default function Home() {
     return (
         <div className={styles.container}>
             <Head>
-                <title>UTD *name pending*</title>
+                <title>{appName}</title>
                 <meta name="description" content="We got kicked out of our room so we made this!" />
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="stylesheet" href="/css/bootstrap.css" />
