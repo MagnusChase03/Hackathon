@@ -16,13 +16,16 @@ function createElements(stringJSON) {
 
                 <div class="col-sm-8">
 
-                    <h3>{json[i]["name"]}</h3>
+                    <h3 class="organizationName">{json[i]["name"]}</h3><hr class="lineSplit"/>
+                    <p>{json[i]["description"].replace(/<[^>]*>/g, '')}</p>
 
                 </div> 
                 <div class="col-sm-4">
 
                     Leader: {json[i]["contactName"]}<br/>
-                    Member Count: {json[i]["memberCount"]}
+                    Member Count: {json[i]["memberCount"]}<br/>
+                    Meeting Location: {json[i]["regularMeetingLocation"] || "N/A"}<br/>
+                    Twitter: @{json[i]["twitter"] || "N/A"}
 
                 </div> 
 

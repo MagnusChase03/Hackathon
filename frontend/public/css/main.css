@@ -32,7 +32,19 @@ hr {
 
 .organizationRow {
 
-    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+
+    padding: 20px;
+    margin: 10px;
+    background-color: #333;
+    color: #fff;
+
+}
+
+.lineSplit {
+
+    background-color: #ddd;
 
 >>>>>>> 3d9404d3250dfbb4f23156c864dd74916da1aa0d
 }
