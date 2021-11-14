@@ -18,7 +18,7 @@ export default function ClassInfo() {
           <li className={navStyle.navTitle}><Link href='/'>{appName}</Link></li>
           <li><Link href='/classInfo'><a>Class Information</a></Link></li>
           <li><Link href='/'><a>Student Organizations</a></Link></li>
-          <li><Link href='/'><a>TBD</a></Link></li>
+          <li><Link href='/about'><a>About</a></Link></li>
         </ul>
       </nav>
 

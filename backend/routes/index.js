@@ -167,7 +167,7 @@ router.get('/sorg', function (req, res, next) {
 });
 
 // Get all orginizations
-router.options('/sorg', cors());
+router.options('/sorg/:name', cors());
 router.get('/sorg/:name', function (req, res, next) {
 
   var name = req.params["name"];
