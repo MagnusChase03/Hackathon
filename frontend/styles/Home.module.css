@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .container {
   padding: 0 0rem;
 }
@@ -14,3 +15,27 @@
 
 
 
+=======
+.container {
+  padding: 0 0rem;
+}
+
+.main {
+  margin-top: 4%;
+  min-height: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.orgs {
+  margin-top: 4%;
+  min-height: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+>>>>>>> 3a3b7e0d2796f0643c9ba24b63fe3e95c1d8fe08

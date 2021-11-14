@@ -18,39 +18,16 @@ export default function Home() {
                 <link rel="stylesheet" href="/css/main.css" />
             </Head>
 
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="/">UTD *name pending*</a>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                    <ul class="navbar-nav mr-auto">
-
-                        <li class="nav-item">
-
-                            <a class="nav-link" href="/classInfo">Class Information</a>
-
-                        </li>
-
-                        <li class="nav-item">
-
-                            <a class="nav-link" href="/studentOrgs">Student Organizations</a>
-
-                        </li>
-
-                        <li class="nav-item">
-
-                            <a class="nav-link" href="/about">About</a>
-
-                        </li>
-
-                    </ul>
-
-                </div>
-                
+            <nav className={navStyle.navBar}>
+                <ul>
+                    <li className={navStyle.navTitle}><Link href='/'>{appName}</Link></li>
+                    <li><Link href='/classInfo'><a>Class Information</a></Link></li>
+                    <li><Link href='/studentOrgs'><a>Student Organizations</a></Link></li>
+                    <li><Link href='/about'><a>About</a></Link></li>
+                </ul>
             </nav>
 
-            <main className={styles.main}>
-
+            <main className={styles.orgs}>
                 <div class="container-fluid">
 
                     <div class="row">
@@ -59,7 +36,7 @@ export default function Home() {
 
                         <div class="col-sm-10" id="content">
 
-                            <h1>UTD Organizations</h1><hr/>
+                            <h1>UTD Organizations</h1><hr />
 
                             <StudentOrgs />
 
@@ -70,7 +47,6 @@ export default function Home() {
                     </div>
 
                 </div>
-
             </main>
 
             <footer className={navStyle.footer}>
