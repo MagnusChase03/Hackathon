@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 import navStyle from '../styles/Nav.module.css'
 import Link from 'next/link'
 
-const appName = 'UTD *name pending*'
+const appName = 'Singularity'
 
 export default function Home() {
     return (
@@ -19,7 +19,7 @@ export default function Home() {
 
             <nav className={navStyle.navBar}>
         <ul>
-          <li className={navStyle.navTitle}><Link href='/'><img src="/assets/logo.png" alt="Logo">{appName}</Link></li>
+          <li className={navStyle.navTitle}><a href='/'><img className={navStyle.logo} src="/assets/logo.png"></img></a></li>
           <li><Link href='/classInfo'><a>Class Information</a></Link></li>
           <li><Link href='/studentOrgs'><a>Student Organizations</a></Link></li>
           <li><Link href='/about'><a>About</a></Link></li>
@@ -93,6 +93,7 @@ export default function Home() {
                                     <div class="col-sm-8">
 
                                         <h3>Kolbe Mosher</h3><hr />
+                                        <p></p>
 
                                     </div>
 

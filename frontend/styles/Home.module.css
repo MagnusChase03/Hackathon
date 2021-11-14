@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-.container {
-  padding: 0 0rem;
-}
-
-.main {
-  min-height: 100vh;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  align-items: center;
-}
-
-
-
-
-=======
 .container {
   padding: 0 0rem;
 }
@@ -38,4 +20,3 @@
   flex-direction: column;
   align-items: center;
 }
->>>>>>> 3a3b7e0d2796f0643c9ba24b63fe3e95c1d8fe08

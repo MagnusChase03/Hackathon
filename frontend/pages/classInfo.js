@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import SearchForm from './components/searchForm'
 // import GetGrades from './components/getGrades'
-const appName = 'UTD *name pending*'
+const appName = 'Singularity'
 
 export default function ClassInfo() {
   return (
@@ -17,7 +17,7 @@ export default function ClassInfo() {
 
       <nav className={navStyle.navBar}>
         <ul>
-          <li className={navStyle.navTitle}><Link href='/'><img src="/assets/logo.png" alt="Logo">{appName}</Link></li>
+          <li className={navStyle.navTitle}><a href='/'><img className={navStyle.logo} src="/assets/logo.png"></img></a></li>
           <li><Link href='/classInfo'><a>Class Information</a></Link></li>
           <li><Link href='/studentOrgs'><a>Student Organizations</a></Link></li>
           <li><Link href='/about'><a>About</a></Link></li>

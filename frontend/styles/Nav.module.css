@@ -1,3 +1,10 @@
+.logo {
+    height: 3vh;
+    width: 12.24vh;
+    padding: 0rem;
+}
+
+
 .navTitle:hover {
     color:#333
 }
@@ -41,3 +48,4 @@
     justify-content: center;
     align-items: center;
 }
+
