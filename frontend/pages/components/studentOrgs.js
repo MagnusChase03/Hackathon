@@ -98,7 +98,7 @@ export default class StudentOrgs extends Component {
                         <input id="inputField" type="text" name='name' value={this.state.subject} onChange={this.handleChange} />
                     </label><br/>
 
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Search" />
                 </form>
                 <div className='returnedElements'>
                     <ul>
