@@ -1,22 +1,11 @@
 import React, { Component } from 'react'
 import style from '../../styles/ClassInfo.module.css'
 
-
-function getRMP(prof) {
-    let returnedJSON = {}
-    fetch('http://localhost:3001/rating/' + prof)
-        .then(res => res.json())
-        .then(json => {
-            // console.log(json);
-            returnedJSON = json;
-            return returnedJSON;
-        })
-}
-
 // This function creates elements out of the JSON that is returned
 // Edit this to change the way the elements on the page look
-function createElements(stringJSON) {
+function createElements(stringJSON, string2) {
     let json = JSON.parse(stringJSON);
+    let json2 = JSON.parse(string2)
     let elements = [];
     for (let i = 0; i < json.length; i++) {
 
@@ -47,6 +36,10 @@ function createElements(stringJSON) {
                     <li key={i}>C: {c1 + c2 + c3}</li>
                     <li key={i}>D: {d1 + d2 + d3}</li>
                     <li key={i}>F: {Number(json[i]["grades"]['F']) || 0}</li>
+                    <li key={i}>Rating: {json2[i]["rating"]}</li>
+                    <li key={i}># of Ratings: {json2[i]["numberOfRatings"]}</li>
+                    <li key={i}>Difficulty: {json2[i]["difficulty"]}</li>
+                    <li key={i}>% Would Take Again: {json2[i]["wouldTakeAgain"]}</li>
                 </ul>
             </div>
 
@@ -56,33 +49,51 @@ function createElements(stringJSON) {
     return elements;
 }
 
-function createRMP(stringJSON) {
+function testElements(stringJSON, string2) {
     let json = JSON.parse(stringJSON);
-    let elements = [];
+    let json2 = JSON.parse(string2)
+    console.log("createElements Called")
+    // console.log(json);
+    // console.log(json2);
+    
 
-    for (let i = 0; i < json.length; i++) {
-        let prof = json[i]["prof"];
+        let a1 = Number(json["grades"]['A+']) || 0;
+        let a2 = Number(json["grades"]['A']) || 0;
+        let a3 = Number(json["grades"]['A-']) || 0;
 
-        fetch('http://localhost:3001/rating/' + prof)
-            .then(res => res.json())
-            .then(json => {
-                console.log(json[i]["rating"]);
-                console.log("RMP SUCCESS")
-                elements.push(
-                    <div>
-                        <ul>
-                            <li key={i}>Rating: {json[i]["rating"]}</li>
-                            <li key={i}># of Ratings: {json[i]["numberOfRatings"]}</li>
-                            <li key={i}>Difficulty: {json[i]["difficulty"]}</li>
-                            <li key={i}>% Would Take Again: {json[i]["wouldTakeAgain"]}</li>
-                        </ul>
-                    </div>
-                )
-            })
+        let b1 = Number(json["grades"]['B+']) || 0;
+        let b2 = Number(json["grades"]['B']) || 0;
+        let b3 = Number(json["grades"]['B-']) || 0;
+
+        let c1 = Number(json["grades"]['C+']) || 0;
+        let c2 = Number(json["grades"]['C']) || 0;
+        let c3 = Number(json["grades"]['C-']) || 0;
+
+        let d1 = Number(json["grades"]['D+']) || 0;
+        let d2 = Number(json["grades"]['D']) || 0;
+        let d3 = Number(json["grades"]['D-']) || 0;
 
 
+        let elements = (
+            <div className={style.courseCard}>
+                <ul>
+                    <li>Course: {json["subj"]} {json["num"]}</li>
+                    <li>Instructor: {json["prof"]}</li>
+                    <li>A: {a1 + a2 + a3}</li>
+                    <li>B: {b1 + b2 + b3}</li>
+                    <li>C: {c1 + c2 + c3}</li>
+                    <li>D: {d1 + d2 + d3}</li>
+                    <li>F: {Number(json["grades"]['F']) || 0}</li>
+                    <li>Rating: {json2["rating"]}</li>
+                    <li># of Ratings: {json2["numberOfRatings"]}</li>
+                    <li>Difficulty: {json2["difficulty"]}</li>
+                    <li>% Would Take Again: {json2["wouldTakeAgain"]}</li>
+                </ul>
+            </div>
 
-    }
+
+        )
+    console.log('Returning Elements = ' + elements);
     return elements;
 }
 
@@ -93,7 +104,6 @@ export default class SearchForm extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.elements = [];
-        this.rmpElements = [];
     }
 
     handleChange(event) {
@@ -115,19 +125,44 @@ export default class SearchForm extends Component {
             fetch('http://localhost:3001/grades/' + this.state.semester + '/' + this.state.year)
                 .then(res => res.json())
                 .then(json => {
-                    console.log(json);
                     this.setState({ returnedJSON: JSON.stringify(json) });
-                    this.elements = createElements(this.state.returnedJSON);
+                    for (var i = 0; i < json.length; i++) {
+
+                        fetch('http://localhost:3001/rating/' + json[i]["prof"])
+                        .then(res2 => res2.json())
+                        .then(json2 => {
+                            try {
+                                this.elements.push(testElements(JSON.stringify(json[i]), JSON.stringify(json2[0])));
+                                console.log('Elements = ' + this.elements)
+                            } catch (error) {
+                                
+                            }
+                            this.forceUpdate();
+                        })
+                    }
                     this.forceUpdate();
                 })
+
         }
         else if (this.state.professor != '' && this.state.subject == '' && this.state.course == '') {
             fetch('http://localhost:3001/grades/' + this.state.semester + '/' + this.state.year + '/' + this.state.professor)
                 .then(res => res.json())
                 .then(json => {
-                    console.log(json);
                     this.setState({ returnedJSON: JSON.stringify(json) });
-                    this.elements = createElements(this.state.returnedJSON);
+                    for (var i = 0; i < json.length; i++) {
+
+                        fetch('http://localhost:3001/rating/' + json[i]["prof"])
+                        .then(res2 => res2.json())
+                        .then(json2 => {
+                            try {
+                                this.elements.push(testElements(JSON.stringify(json[i]), JSON.stringify(json2[0])));
+                                console.log('Elements = ' + this.elements)
+                            } catch (error) {
+                                
+                            }
+                            this.forceUpdate();
+                        })
+                    }
                     this.forceUpdate();
                 })
         }
@@ -135,21 +170,47 @@ export default class SearchForm extends Component {
             fetch('http://localhost:3001/grades/' + this.state.semester + '/' + this.state.year + '/' + this.state.subject + '/' + this.state.course)
                 .then(res => res.json())
                 .then(json => {
-                    console.log(json);
                     this.setState({ returnedJSON: JSON.stringify(json) });
-                    this.elements = createElements(this.state.returnedJSON);
+                    for (var i = 0; i < json.length; i++) {
+
+                        fetch('http://localhost:3001/rating/' + json[i]["prof"])
+                        .then(res2 => res2.json())
+                        .then(json2 => {
+                            try {
+                                this.elements.push(testElements(JSON.stringify(json[i]), JSON.stringify(json2[0])));
+                                console.log('Elements = ' + this.elements)
+                            } catch (error) {
+                                
+                            }
+                            this.forceUpdate();
+                        })
+                    }
                     this.forceUpdate();
                 })
+
         }
         else if (this.state.professor == '' && this.state.subject != '' && this.state.course != '' && this.state.best) {
             fetch('http://localhost:3001/grades/best/' + this.state.semester + '/' + this.state.year + '/' + this.state.subject + '/' + this.state.course)
                 .then(res => res.json())
                 .then(json => {
-                    console.log(json);
                     this.setState({ returnedJSON: JSON.stringify(json) });
-                    this.elements = createElements(this.state.returnedJSON);
+                    for (var i = 0; i < json.length; i++) {
+
+                        fetch('http://localhost:3001/rating/' + json[i]["prof"])
+                        .then(res2 => res2.json())
+                        .then(json2 => {
+                            try {
+                                this.elements.push(testElements(JSON.stringify(json[i]), JSON.stringify(json2[0])));
+                                console.log('Elements = ' + this.elements)
+                            } catch (error) {
+                                
+                            }
+                            this.forceUpdate();
+                        })
+                    }
                     this.forceUpdate();
                 })
+
         }
         else {
             alert("Invalid search, please ensure all items are lowercase!")
@@ -203,7 +264,6 @@ export default class SearchForm extends Component {
                 </form>
                 <div className='returnedElements'>
                     {this.elements}
-                    {this.rmpElements}
                 </div>
 
             </div>
