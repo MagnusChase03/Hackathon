@@ -166,7 +166,7 @@ router.get('/sorg', function (req, res, next) {
 
 });
 
-// Get all orginizations
+// Get all orginizations by name
 router.options('/sorg/:name', cors());
 router.get('/sorg/:name', function (req, res, next) {
 
@@ -189,6 +189,20 @@ router.get('/sorg/:name', function (req, res, next) {
     }
 
     res.json(matches);
+
+  });
+
+});
+
+// Get all orginizations by uri
+router.options('/sorg/details/:uri', cors());
+router.get('/sorg/details/:uri', function (req, res, next) {
+
+  var uri = req.params["uri"];
+
+  exec("python3 ratemyprofessor/main.py sorg " + uri, (error, stdout, stderr) => {
+
+    res.json(JSON.parse(stdout));
 
   });
 

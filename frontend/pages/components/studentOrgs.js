@@ -12,7 +12,7 @@ function createElements(stringJSON) {
         elements.push(
         <div class="container-fluid" key={i}>
             
-            <div class="row">
+            <div class="row organizationRow"> 
 
                 <div class="col-sm-8">
 
@@ -21,6 +21,7 @@ function createElements(stringJSON) {
                 </div> 
                 <div class="col-sm-4">
 
+                    Leader: {json[i]["contactName"]}<br/>
                     Member Count: {json[i]["memberCount"]}
 
                 </div> 
@@ -59,11 +60,27 @@ export default class StudentOrgs extends Component {
         fetch('http://localhost:3001/sorg/' + this.state.name)
         .then(res => res.json())
         .then(json => {
-            console.log(json);
             this.setState({ returnedJSON: JSON.stringify(json) });
             // console.log(this.state.returnedJSON);
-            this.elements = createElements(this.state.returnedJSON);
+            //this.elements = createElements(this.state.returnedJSON);
+
+            var detailed = []
+            for (var i = 0; i < json.length; i++) {
+
+                fetch('http://localhost:3001/sorg/details/' + json[i]["uri"])
+                .then(res2 => res2.json())
+                .then(json2 => {
+
+                    detailed.push(json2);
+                    this.elements = createElements(JSON.stringify(detailed));
+                    this.forceUpdate();
+
+                })
+
+            }
+
             this.forceUpdate();
+
         })
 
     }
@@ -74,8 +91,8 @@ export default class StudentOrgs extends Component {
                 <form onSubmit={this.handleSubmit}>
 
                     <label>
-                        Name:
-                        <input type="text" name='name' value={this.state.subject} onChange={this.handleChange} />
+                        <span>Name:</span>
+                        <input id="inputField" type="text" name='name' value={this.state.subject} onChange={this.handleChange} />
                     </label><br/>
 
                     <input type="submit" value="Submit" />
