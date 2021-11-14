@@ -115,6 +115,10 @@ export default function Home() {
                                     <div class="col-sm-8">
 
                                         <h3>Kolbe Mosher</h3><hr />
+                                        <p>
+                                            Hi, I' Kolbe Mosher. I am a freshman majoring in computer science, I mainly use python and nodejs. In my free time
+                                            I love to work on personal projects aswell as play video games.
+                                        </p>
 
                                     </div>
 

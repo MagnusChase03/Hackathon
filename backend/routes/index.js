@@ -22,7 +22,7 @@ router.get('/grades/:semester/:year', function (req, res, next) {
 
 });
 
-// Returns grades containing proffesor name
+// Returns grades containing professor name
 router.options('/grades/:semester/:year/:prof', cors());
 router.get('/grades/:semester/:year/:prof', function (req, res, next) {
 
@@ -167,6 +167,33 @@ router.get('/sorg', function (req, res, next) {
 });
 
 // Get all orginizations
+router.options('/sorg/:name', cors());
+router.get('/sorg/:name', function (req, res, next) {
+
+  var name = req.params["name"];
+
+  exec("python3 ratemyprofessor/main.py sorg", (error, stdout, stderr) => {
+
+    var orginzation = JSON.parse(stdout);
+
+    // Find names with keyword
+    var matches = []
+    for (var org in orginzation) {
+
+      if (orginzation[org]["name"].toUpperCase().includes(name.toUpperCase())) {
+
+        matches.push(orginzation[org]);
+
+      }
+
+    }
+
+    res.json(matches);
+
+  });
+
+});
+
 router.options('/sorg/:name', cors());
 router.get('/sorg/:name', function (req, res, next) {
 
