@@ -1,14 +1,12 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/studentOrgs.module.css'
 import navStyle from '../styles/Nav.module.css'
+import Head from 'next/head'
 import Link from 'next/link'
-
 const appName = 'UTD *name pending*'
 
-export default function Home() {
+export default function ClassInfo() {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>UTD *name pending*</title>
         <meta name="description" content="We got kicked out of our room so we made this!" />
@@ -19,14 +17,15 @@ export default function Home() {
         <ul>
           <li className={navStyle.navTitle}><Link href='/'>{appName}</Link></li>
           <li><Link href='/classInfo'><a>Class Information</a></Link></li>
-          <li><Link href='/studentOrgs'><a>Student Organizations</a></Link></li>
+          <li><Link href='/'><a>Student Organizations</a></Link></li>
           <li><Link href='/'><a>TBD</a></Link></li>
         </ul>
       </nav>
 
       <main className={styles.main}>
-        <h1>Welcome to {appName}!</h1>
-        <h3>We're happy to see you!</h3>
+        <h1>Student Organizations</h1>
+
+
       </main>
 
       <footer className={navStyle.footer}>
