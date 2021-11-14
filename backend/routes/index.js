@@ -88,6 +88,43 @@ router.get('/grades/:semester/:year/:subj/:class', function (req, res, next) {
 
 });
 
+// Returns best professor for said class
+router.options('/grades/best/:semester/:year/:subj/:class', cors());
+router.get('/grades/best/:semester/:year/:subj/:class', function (req, res, next) {
+
+  var semester = req.params["semester"];
+  var year = req.params["year"];
+  var subject = req.params["subj"];
+  var classNumber = req.params["class"];
+
+  var dataLocation = "data/" + semester[0].toUpperCase() + semester.slice(1) + " " + year + "/" + semester + "" + year + ".json"
+  console.log(dataLocation);
+
+  fs.readFile(dataLocation, (err, data) => {
+
+    var grades = JSON.parse(data.toString());
+
+    // Finding best professor
+    var bestGrades = -1;
+    var bestProfessor = grades[0];
+
+    for (var grade in grades) {
+
+      if (grades[grade]["subj"] == subject && grades[grade]["num"] == classNumber && grades[grade]["grades"]["A+"] > bestGrades) {
+
+        bestProfessor = grades[grade];
+        bestGrades = grades[grade]["grades"]["A+"] > bestGrades
+
+      }
+
+    }
+
+    res.json([bestProfessor]);
+
+  });
+
+});
+
 // Get rate my professor ratings
 router.options('/rating/:prof', cors());
 router.get('/rating/:prof', function (req, res, next) {
