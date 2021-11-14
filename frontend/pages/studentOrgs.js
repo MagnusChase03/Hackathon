@@ -5,7 +5,7 @@ import navStyle from '../styles/Nav.module.css'
 import Link from 'next/link'
 import StudentOrgs from './components/studentOrgs'
 
-const appName = 'UTD *name pending*'
+const appName = 'Singularity'
 
 export default function Home() {
     return (
@@ -20,7 +20,7 @@ export default function Home() {
 
             <nav className={navStyle.navBar}>
                 <ul>
-                    <li className={navStyle.navTitle}><Link href='/'>{appName}</Link></li>
+                    <li className={navStyle.navTitle}><a href='/'><img className={navStyle.logo} src="/assets/logo.png"></img></a></li>
                     <li><Link href='/classInfo'><a>Class Information</a></Link></li>
                     <li><Link href='/studentOrgs'><a>Student Organizations</a></Link></li>
                     <li><Link href='/about'><a>About</a></Link></li>
