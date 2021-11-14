@@ -26,15 +26,17 @@ export default function ClassInfo() {
 
       <main className={styles.main}>
         <h1>Class Information</h1>
-        <p>Need grade info, professor ratings, or any other notable content on a class? Enter it in the field below!</p>
-        <SearchForm /> 
+        <p>Need grade info, professor ratings, or any other notable content on a class?Enter it in the field below!</p>
+        <div className={styles.SearchForm}>
+          <SearchForm />
+        </div>
 
-      </main>
+      </main >
 
       <footer className={navStyle.footer}>
         <h5>Created at HackUTD</h5>
         <a href="https://github.com/MagnusChase03/Hackathon">Github</a>
       </footer>
-    </div>
+    </div >
   )
 }
