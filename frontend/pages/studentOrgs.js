@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import navStyle from '../styles/Nav.module.css'
 import Link from 'next/link'
-import StudentOrgs from './components/studentOrgs'
+import StudentOrgs from './components/studentOrgs.js'
 
 const appName = 'Singularity'
 

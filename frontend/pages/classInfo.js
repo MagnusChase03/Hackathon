@@ -2,7 +2,7 @@ import styles from '../styles/ClassInfo.module.css'
 import navStyle from '../styles/Nav.module.css'
 import Head from 'next/head'
 import Link from 'next/link'
-import SearchForm from './components/searchForm'
+import SearchForm from './components/searchForm.js'
 const appName = 'Singularity'
 
 export default function ClassInfo() {
