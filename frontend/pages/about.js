@@ -60,7 +60,10 @@ export default function Home() {
                                 <h3>Zachary Ness</h3><hr/>
                                 <p>
                                     Yo, I'm Zachary Ness. I am a freshman majoring in computer science, and I have been programming
-                                    on linux
+                                    on Linux since I was six year old. This is all due to my father being a software developer and
+                                    wanting to get me into programming. Once I was introduced to coding, I just could not get enough
+                                    of it. To this day, I still use Arch Linux and am constatly trying to learn more level programming.
+                                    Recently, I have been learning x86 assembly to help build on my understanding to write better C code.
                                 </p>
 
                             </div>
