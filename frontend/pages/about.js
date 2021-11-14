@@ -98,7 +98,11 @@ export default function Home() {
                                     <div class="col-sm-8">
 
                                         <h3>Kolbe Mosher</h3><hr />
-                                        <p></p>
+                                        <p>
+                                            Hi My Name is Kolbe, Mosher, I am a freshman computer science major, and I mainly code in python and nodejs. 
+                                            In my freetime I enjoy working on side projects and playing video games.
+                                            I started programming when I was about 12 and used a raspberry pi for all my python scripts.
+                                        </p>
 
                                     </div>
 
