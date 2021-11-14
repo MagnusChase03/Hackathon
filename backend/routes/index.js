@@ -54,9 +54,9 @@ router.get('/grades/:semester/:year/:prof', function (req, res, next) {
 
 });
 
-// Returns professor with most A+ in class
-router.options('/grades/best/:semester/:year/:subj/:class', cors());
-router.get('/grades/best/:semester/:year/:subj/:class', function (req, res, next) {
+// Returns professors who taught said class
+router.options('/grades/:semester/:year/:subj/:class', cors());
+router.get('/grades/:semester/:year/:subj/:class', function (req, res, next) {
 
   var semester = req.params["semester"];
   var year = req.params["year"];
@@ -71,21 +71,18 @@ router.get('/grades/best/:semester/:year/:subj/:class', function (req, res, next
     var grades = JSON.parse(data.toString());
 
     // Finding grades with matching professor
-    var bestGradeCount = 0;
-    var bestGrader = grades[0];
-
+    var matches = [];
     for (var grade in grades) {
 
-      if (grades[grade]["subj"] == subject && grades[grade]["num"] == classNumber && grades[grade]["grades"]["A+"] > bestGradeCount) {
+      if (grades[grade]["subj"] == subject && grades[grade]["num"] == classNumber) {
 
-        bestGradeCount = grades[grade]["grades"]["A+"];
-        bestGrader = grades[grade];
+        matches.push(grades[grade]);
 
       }
 
     }
 
-    res.json([bestGrader]);
+    res.json(matches);
 
   });
 
