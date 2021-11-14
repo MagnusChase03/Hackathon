@@ -1,7 +1,26 @@
+<<<<<<< HEAD
 .main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
+=======
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.courseCard {
+    margin: 2%;
+    padding: 1%;
+    background-color: rgba(0.1, 0.1, 0.1, 0.1);
+}
+
+.courseCard li {
+    list-style-type: none;
+>>>>>>> 3d9404d3250dfbb4f23156c864dd74916da1aa0d
 }
