@@ -17,36 +17,14 @@ export default function Home() {
                 <link rel="stylesheet" href="/css/main.css" />
             </Head>
 
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="/">UTD *name pending*</a>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                    <ul class="navbar-nav mr-auto">
-
-                        <li class="nav-item">
-
-                            <a class="nav-link" href="/classInfo">Class Information</a>
-
-                        </li>
-
-                        <li class="nav-item">
-
-                            <a class="nav-link" href="/studentOrgs">Student Organizations</a>
-
-                        </li>
-
-                        <li class="nav-item">
-
-                            <a class="nav-link" href="/about">About</a>
-
-                        </li>
-
-                    </ul>
-
-                </div>
-                
-            </nav>
+            <nav className={navStyle.navBar}>
+        <ul>
+          <li className={navStyle.navTitle}><Link href='/'>{appName}</Link></li>
+          <li><Link href='/classInfo'><a>Class Information</a></Link></li>
+          <li><Link href='/studentOrgs'><a>Student Organizations</a></Link></li>
+          <li><Link href='/about'><a>About</a></Link></li>
+        </ul>
+      </nav>
 
             <main className={styles.main}>
 
