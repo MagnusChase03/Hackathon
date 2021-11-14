@@ -53,7 +53,7 @@ def nebula():
 def sorg():
     url = "https://api.presence.io/utdallas/v1/organizations"
     jsonData = requests.get(url).json()
-    print(jsonData)
+    print(json.dumps(jsonData))
 
 
 if command == "ratemyprofessor":
